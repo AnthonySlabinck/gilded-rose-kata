@@ -1,7 +1,10 @@
 package com.gildedrose;
 
 class GildedRose {
+
     Item[] items;
+
+    private ItemUpdaterFactory itemUpdaterFactory = new ItemUpdaterFactory();
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -9,19 +12,8 @@ class GildedRose {
 
     public void updateAtEndOfDay() {
         for (Item item : items) {
-            ItemUpdater itemUpdater = createItemUpdater(item);
+            ItemUpdater itemUpdater = itemUpdaterFactory.createItemUpdater(item);
             itemUpdater.update(item);
         }
-    }
-
-    private ItemUpdater createItemUpdater(Item item) {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return new LegendaryItemUpdater();
-        } else if (item.name.equals("Aged Brie")) {
-            return new CheeseItemUpdater();
-        } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            return new BackstagePassItemUpdater();
-        }
-        return new DefaultItemUpdater();
     }
 }
