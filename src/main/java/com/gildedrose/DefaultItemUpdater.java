@@ -35,7 +35,7 @@ public class DefaultItemUpdater implements ItemUpdater {
         }
     }
 
-    private void decrementQuality(Item item) {
+    protected void decrementQuality(Item item) {
         if (item.quality > 0) {
             item.quality = item.quality - 1;
         }

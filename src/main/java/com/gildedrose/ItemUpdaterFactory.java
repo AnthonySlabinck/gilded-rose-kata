@@ -9,6 +9,8 @@ public class ItemUpdaterFactory {
             return new CheeseItemUpdater();
         } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             return new BackstagePassItemUpdater();
+        } else if (item.name.startsWith("Conjured")) {
+            return new ConjuredItemUpdater();
         }
         return new DefaultItemUpdater();
     }

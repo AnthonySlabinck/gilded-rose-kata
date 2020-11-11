@@ -117,6 +117,24 @@ class GildedRoseTest {
         assertThat(getFirstItem(app).quality).isZero();
     }
 
+    @Test
+    public void conjuredQualityDegradesTwiceAsFast() {
+        GildedRose app = createAppWithOneItem(CONJURED, 5, 7);
+
+        app.updateAtEndOfDay();
+
+        assertThat(5).isEqualTo(getFirstItem(app).quality);
+    }
+
+    @Test
+    public void conjuredQualityDegradesBy4WhenExpired() {
+        GildedRose app = createAppWithOneItem(CONJURED, 0, 7);
+
+        app.updateAtEndOfDay();
+
+        assertThat(3).isEqualTo(getFirstItem(app).quality);
+    }
+
     private GildedRose createAppWithOneItem(String name, int sellIn, int quality) {
         return new GildedRose(new Item[]{new Item(name, sellIn, quality)});
     }
