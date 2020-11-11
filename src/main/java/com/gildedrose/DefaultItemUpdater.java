@@ -32,9 +32,7 @@ public class DefaultItemUpdater implements ItemUpdater {
     }
 
     protected void updateSellIn(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn = item.sellIn - 1;
-        }
+        item.sellIn = item.sellIn - 1;
     }
 
     protected void updateExpired(Item item) {
